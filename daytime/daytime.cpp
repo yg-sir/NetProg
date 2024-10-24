@@ -6,7 +6,7 @@
 #include <unistd.h>    
 #include <netinet/in.h> 
 
-#define DAYTIME_PORT 44214 
+#define DAYTIME_PORT 13
 #define BUFFER_SIZE 1024
 
 int main() {
@@ -21,7 +21,7 @@ int main() {
 
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(44214);
+    server_addr.sin_port = htons(13);
     server_addr.sin_addr.s_addr = inet_addr("172.16.40.1"); 
 
     const char *request = "GET TIME";
