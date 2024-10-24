@@ -5,7 +5,7 @@
 #include <arpa/inet.h> 
 #include <unistd.h>
 
-#define PORT 44214
+#define PORT 13
 
 int main() {
     int sock = 0;
