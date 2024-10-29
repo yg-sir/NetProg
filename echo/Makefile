@@ -1,24 +1,31 @@
-# Названия исполняемых файлов
-SERVER = server
-CLIENT = client
+# Название исполняемого файла
+TARGET = echo
 
-# Компилятор и флаги
-CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++11
+# Компилятор
+CC = g++
+
+# Флаги компиляции
+CFLAGS = -Wall -Wextra
 
 # Исходные файлы
-SERVER_SRC = server.cpp
-CLIENT_SRC = client.cpp
+SRCS = echo.cpp
 
-# Правила сборки
-all: $(SERVER) $(CLIENT)
+# Объектные файлы
+OBJS = $(SRCS:.cpp=.o)
 
-$(SERVER): $(SERVER_SRC)
-	$(CXX) $(CXXFLAGS) -o $(SERVER) $(SERVER_SRC)
+# Правило по умолчанию для сборки
+all: $(TARGET)
 
-$(CLIENT): $(CLIENT_SRC)
-	$(CXX) $(CXXFLAGS) -o $(CLIENT) $(CLIENT_SRC)
+# Правило для сборки исполняемого файла
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
 
-# Очистка скомпилированных файлов
+# Правило для компиляции объектных файлов
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Правило для очистки
 clean:
-	rm -f $(SERVER) $(CLIENT)
+	rm -f $(OBJS) $(TARGET)
+
+	.PHONY: all clean
