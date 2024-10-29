@@ -5,7 +5,7 @@
 #include <arpa/inet.h> 
 #include <unistd.h>
 
-#define PORT 13
+#define PORT 7
 
 int main() {
     int sock = 0;
@@ -43,7 +43,7 @@ int main() {
             break;
         }
 
-        memset(buffer, 0, sizeof(buffer));
+        memset(buffer,'\0', sizeof(buffer));
         int valread = read(sock, buffer, sizeof(buffer) - 1); 
         if (valread < 0) {
             std::cerr << "Ошибка чтения ответа от сервера" << std::endl;
