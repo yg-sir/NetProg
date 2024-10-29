@@ -42,7 +42,7 @@ int main() {
         return 1;
     }
 
-    buffer[n] = '0'; 
+    buffer[n] = '\0'; 
     std::cout << "Ответ от сервера: " << buffer << std::endl;
 
     close(sockfd);
